@@ -8,7 +8,13 @@
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:watch": "jest --watch --verbose",
     "test:coverage": "jest --coverage",
-    "lint": "eslint --ext .js,.ts src/"
+    "lint": "eslint --ext .js,.ts src/",
+    "validate": "yarn lint && yarn test:coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn validate"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -22,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "babel-jest": "^26.0.1",
     "eslint": "^7.0.0",
+    "husky": "^4.2.5",
     "is-ci-cli": "^2.0.0",
     "jest": "^26.0.1",
     "typescript": "^3.9.2"
