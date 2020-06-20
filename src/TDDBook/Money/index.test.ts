@@ -14,4 +14,11 @@ describe('Money', () => {
     expect(new Money(5).equals(new Money(5))).toBe(true)
     expect(new Money(5).equals(new Money(6))).toBe(false)
   })
+
+  // chapter 4 - privacy
+  it('should correctly compare Money to Money', () => {
+    const moneyResult = new Money(5)
+    expect(new Money(10).amount).toEqual(moneyResult.times(2))
+    expect(new Money(15).amount).toEqual(moneyResult.times(3))
+  })
 })
