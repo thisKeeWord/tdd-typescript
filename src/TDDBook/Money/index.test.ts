@@ -11,8 +11,8 @@ describe('Money', () => {
   })
 
   it('should test for equality', () => {
-    expect(new MoneyFranc.Money(5)).toEqual(new MoneyFranc.Money(5))
-    expect(new MoneyFranc.Money(5)).not.toEqual(new MoneyFranc.Money(6))
+    expect(new MoneyFranc.Money(5).equals(new MoneyFranc.Money(5))).toBe(true)
+    expect(new MoneyFranc.Money(5).equals(new MoneyFranc.Money(6))).toBe(false)
   })
 
   // chapter 4 - privacy
@@ -31,9 +31,16 @@ describe('Money', () => {
 
   // chapter 6 - Equality For All, Redux
   it('should test for equality', () => {
-    expect(new MoneyFranc.Money(5)).toEqual(new MoneyFranc.Money(5))
-    expect(new MoneyFranc.Money(5)).not.toEqual(new MoneyFranc.Money(6))
-    expect(new MoneyFranc.Franc(5)).toEqual(new MoneyFranc.Franc(5))
-    expect(new MoneyFranc.Franc(5)).not.toEqual(new MoneyFranc.Franc(6))
+    expect(new MoneyFranc.Dollar(5).equals(new MoneyFranc.Dollar(5))).toBe(true)
+    expect(new MoneyFranc.Dollar(5).equals(new MoneyFranc.Dollar(6))).toBe(
+      false,
+    )
+    expect(new MoneyFranc.Franc(5).equals(new MoneyFranc.Franc(5))).toBe(true)
+    expect(new MoneyFranc.Franc(5).equals(new MoneyFranc.Franc(6))).toBe(false)
+  })
+
+  // chapter 7 - apples & oranges
+  it('should test for equality between subclass(es)', () => {
+    expect(new MoneyFranc.Dollar(5).equals(new MoneyFranc.Franc(5))).toBe(false)
   })
 })

@@ -7,9 +7,12 @@ class Money {
   times(multiplier: number): number {
     return this.amount * multiplier
   }
-  equals(moneyObj: Money): boolean {
+  equals(moneyObj: Money | Dollar | Franc): boolean {
     const money = moneyObj
-    return this.amount == money.amount
+    return (
+      this.amount == money.amount &&
+      this.constructor.name === money.constructor.name
+    )
   }
 }
 
