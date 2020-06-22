@@ -1,4 +1,4 @@
-export default class Money {
+class Money {
   amount: number
   constructor(money: number) {
     this.amount = money
@@ -12,4 +12,25 @@ export default class Money {
     const dollar = moneyObj
     return this.amount == dollar.amount
   }
+}
+
+class Franc {
+  amount: number
+  constructor(franc: number) {
+    this.amount = franc
+  }
+
+  times(multiplier: number): number {
+    return this.amount * multiplier
+  }
+
+  equals(francObj: Franc): boolean {
+    const dollar = francObj
+    return this.amount == dollar.amount
+  }
+}
+
+export const MoneyFranc = {
+  Money: Money,
+  Franc: Franc,
 }
