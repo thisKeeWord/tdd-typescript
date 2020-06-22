@@ -1,5 +1,5 @@
 class Money {
-  amount: number
+  public amount: number
   constructor(money: number) {
     this.amount = money
   }
@@ -7,30 +7,26 @@ class Money {
   times(multiplier: number): number {
     return this.amount * multiplier
   }
-
   equals(moneyObj: Money): boolean {
-    const dollar = moneyObj
-    return this.amount == dollar.amount
+    const money = moneyObj
+    return this.amount == money.amount
   }
 }
 
-class Franc {
-  amount: number
-  constructor(franc: number) {
-    this.amount = franc
+class Dollar extends Money {
+  constructor(amount: number) {
+    super(amount)
   }
+}
 
-  times(multiplier: number): number {
-    return this.amount * multiplier
-  }
-
-  equals(francObj: Franc): boolean {
-    const dollar = francObj
-    return this.amount == dollar.amount
+class Franc extends Money {
+  constructor(amount: number) {
+    super(amount)
   }
 }
 
 export const MoneyFranc = {
   Money: Money,
+  Dollar: Dollar,
   Franc: Franc,
 }

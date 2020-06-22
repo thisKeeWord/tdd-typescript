@@ -11,8 +11,8 @@ describe('Money', () => {
   })
 
   it('should test for equality', () => {
-    expect(new MoneyFranc.Money(5).equals(new MoneyFranc.Money(5))).toBe(true)
-    expect(new MoneyFranc.Money(5).equals(new MoneyFranc.Money(6))).toBe(false)
+    expect(new MoneyFranc.Money(5)).toEqual(new MoneyFranc.Money(5))
+    expect(new MoneyFranc.Money(5)).not.toEqual(new MoneyFranc.Money(6))
   })
 
   // chapter 4 - privacy
@@ -27,5 +27,13 @@ describe('Money', () => {
     const francResult = new MoneyFranc.Franc(5)
     expect(new MoneyFranc.Franc(10).amount).toEqual(francResult.times(2))
     expect(new MoneyFranc.Franc(15).amount).toEqual(francResult.times(3))
+  })
+
+  // chapter 6 - Equality For All, Redux
+  it('should test for equality', () => {
+    expect(new MoneyFranc.Money(5)).toEqual(new MoneyFranc.Money(5))
+    expect(new MoneyFranc.Money(5)).not.toEqual(new MoneyFranc.Money(6))
+    expect(new MoneyFranc.Franc(5)).toEqual(new MoneyFranc.Franc(5))
+    expect(new MoneyFranc.Franc(5)).not.toEqual(new MoneyFranc.Franc(6))
   })
 })
